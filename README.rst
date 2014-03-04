@@ -1,6 +1,6 @@
-=====
+================
 Django Boot Log
-=====
+================
 
 Django BootLog is a Django Blogging App based on Twitter Bootstrap theme. It allows the developers to make blog posts where the focus is on providing quick and acceptable blogging platform. 
 
@@ -25,7 +25,8 @@ Quick start
       )
 
 3. Following are some default settings used. You may change them as required::
-STATIC_URL = '/static/'
+
+		STATIC_URL = '/static/'
 
 		HAYSTACK_CONNECTIONS = {
 		    'default': { 
@@ -38,12 +39,12 @@ STATIC_URL = '/static/'
 		MEDIA_ROOT = os.path.join(BASE_DIR,'bootlog/media/')
 		CKEDITOR_UPLOAD_PATH = os.path.join(MEDIA_ROOT,'/uploads/')
 		CKEDITOR_CONFIGS = {
-		           'default': {
-		               'toolbar': 'Complete',
-		               'height': 300,
-		               'width': 0,
-		           },
-		       }
+		    'default': {
+		        'toolbar': 'Complete',
+		        'height': 300,
+		        'width': 0,
+		    },
+		}
 
 4. Include the django-bootlog URLconf in your project urls.py like this::
 
@@ -84,4 +85,3 @@ Following are the default values::
 			'base_page': 'bootlog/base.html',
 			'footer_caption': 'This site is powered by Django & Bootstrap',
 		}
-
