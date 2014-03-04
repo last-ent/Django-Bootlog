@@ -1,0 +1,48 @@
+{%extends 'bootblog/bootblog.html' %}
+
+{%block post_mid_column %}
+
+        {% if query %}
+        {% for result in page.object_list %}
+
+<div class="panel panel-{{result.object.category.colour.boot_tag}}">
+<div class="panel-heading"><h4><b>{{result.object.title}}</b></h4></div>
+<div class="panel-body">
+<p>{{result.object.entry}}</p>
+</div>
+<div class="panel-footer">
+    <button class="btn btn-default btn-sm disabled"><span class="glyphicon glyphicon-time"></span> {{result.object.pub_date}}</button>
+    <button onclick="window.location.href='?category={{result.object.category}}'" class="btn btn-default btn-link btn-sm" ALIGN="right"><span class="glyphicon glyphicon-bookmark"></span> {{result.object.category}}</button></div>
+</div>
+         
+{%endfor%}
+
+{%else %}
+
+                <div class="alert alert-danger" ALIGN="center"><h2>Sorry, Nothing to see here.</h2></div>
+
+
+{%endif%}
+<ul class="pager btn-lg">
+<div class="pagination">
+    <span class="step-links">
+        {% if page.has_previous %}
+            <li><a href = "?page={{page.previous_page_number}}">&laquo;</a></li>
+        {% endif %}
+
+        <span class="current">
+            Page {{page.number}} of {{page.paginator.num_pages }}.
+        </span>
+
+        {% if page.has_next %}
+        <li>
+            <a href="?page={{page.next_page_number}}">&raquo;</a>
+        </li>
+        {% endif %}
+    </span>
+</div>
+</ul>
+
+    </form>
+
+{% endblock %}

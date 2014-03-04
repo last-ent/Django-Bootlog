@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include bootlog/static *
+recursive-include bootlog/templates *

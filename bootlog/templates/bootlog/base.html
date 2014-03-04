@@ -1,0 +1,20 @@
+{% extends header %}
+
+
+{% block body %}
+	{%include toprow%}	
+	
+	{% comment %}
+		{%block top_row %} {%endblock top_row %}
+	{%endcomment%}
+
+	{%include tri_stack%}
+
+	{% comment %}
+		{%block tri_stack %} Tristack! {%endblock tri_stack%}
+	{%endcomment%}
+
+	{%include footer_row %}
+{%endblock body%}
+
+

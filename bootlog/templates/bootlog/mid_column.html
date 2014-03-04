@@ -1,0 +1,48 @@
+{% block center_column %}
+
+	{%if entries %}
+		{% autoescape off %}
+
+			{%for post in entries %}
+				{%if post.category.colour%}
+					{%include 'bootlog/mid_col_post_cat.html'%}
+
+				{%else%}
+					{%include 'bootlog/mid_col_post_col.html'%}
+				{%endif%}
+			{%endfor%}
+			
+		{% endautoescape %}
+
+	{% if entries.paginator.num_pages > 1 %}
+		<ul class="pager btn-lg">
+		<div class="pagination">
+			<span class="step-links">
+				{% if entries.has_previous %}
+					<li><a href = "?page={{entries.previous_page_number}}">&laquo;</a></li>
+				{% endif %}
+
+				<span class="current">
+					Page {{entries.number}} of {{entries.paginator.num_pages }}.
+				</span>
+
+				{% if entries.has_next %}
+				<li>
+					<a href="?page={{entries.next_page_number}}">&raquo;</a>
+				</li>
+				{% endif %}
+			</span>
+		</div>
+		</ul>
+	{%endif%}
+
+	{%else%}
+
+		<div class="alert alert-danger" ALIGN="center">
+			<h2>
+				Sorry, Nothing to see here.
+			</h2>
+		</div>
+
+	{%endif%}
+{%endblock center_column %}
