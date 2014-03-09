@@ -34,25 +34,15 @@ class Post(models.Model):
 	pub_date = models.DateField(default=datetime.datetime.now)
 	category = models.ForeignKey(Category)
 	blog = models.ForeignKey(Blog)
+	perma_link = models.CharField(max_length=50,blank = True)
 	#colour = models.ForeignKey(Category.colour)
 
+	# https://docs.djangoproject.com/en/1.6/topics/db/models/#overriding-model-methods
+	def save(self, *args, **kwargs):
+		super(Post,self).save(*args,**kwargs)
+		if self.perma_link =='':
+			self.perma_link = "b%sp%s" %(self.blog.pk,self.pk)
+			self.save(*args, **kwargs)
+			
 	def __unicode__(self):
 		return "%s" %self.title
-
-# class Blog(models.Model):
-# 	blogpost = models.ForeignKey(Post)
-# 	blog_name=models.CharField(max_length=240,blank=False)
-
-
-
-
-# colour = {
-# 	'Red':'danger',
-# 	'Light Blue':'info',
-# 	'Blue':'primary',
-# 	'Green':'success',
-# 	'Default':'default',
-# 	'Yellow':'warning',
-# }
-
-# printcolour

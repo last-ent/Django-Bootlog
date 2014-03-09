@@ -1,76 +1,65 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 import datetime
 from .models import Post, Category
 # Create your tests here.
 
+# class GetPage(TestCase):
+# 	def test_index(self):
+# 		resp = self.client.get('/b/')
+# 		self.assertEqual(resp.status_code,200)
+
 #TESTCASE TO ADD FOR PRIOR DATE -- e: FAIL
-#TO SUBMIT WIHOUT TITLE/ENTRY/CATEGORY
-
-blog_base = '/b/'
-
-class PostTestCases(TestCase):
-	def setUp(self):
-		self.cat = Category.objects.create(category="Test")
-
+class AddEntry(TestCase):
 	def test_add_blank_title(self):
+		#print c
 		try:
-			
+			c = Category.objects.create(category="Test")
 			p = Post.objects.create(
-				entry = "Entry_t",
-				category=self.cat,
-			)
-			p.save()
-			
-			if Post.objects.filter(entry="Entry_t"):
-				self.assertEqual(1,2)
-		except:
-			pass
-		
-	def test_add_blank_entry(self):
-		try:
-			
-			p = Post.objects.create(
-				title="Test Add_e",
-				category=self.cat,
-				)
-			p.save()
-			if Post.objects.filter(title="Test Add_e"):
-				self.assertEqual(1,2)
-		except:
-			pass
-		
-
-	def test_add_blank_category(self):
-		try:
-			
-			p = Post.objects.create(
-				title="Test Add_c",
+				#title="Test Add",
 				entry = "Entry",
+				category=c,
+			#	pub_date=datetime.datetime.now()-datetime.timedelta(days =2)
 				)
 			p.save()
-			if Post.objects.filter(title="Test Add_c"):
+			print "****&&&&&&&&&&-----------", Post.objects.filter(entry="Entry")
+			if Post.objects.filter(entry="Entry"):
 				self.assertEqual(1,2)
 		except:
 			pass
-
-class ClientTestCases(TestCase):
-	def setUp(self):
-		self.client = Client()
-
-	def test_default_page(self):
-		response = self.client.get(blog_base)
-		self.assertEqual(200,response.status_code)
-	
-	def test_unavailable_category(self):
-		response = self.client.get(blog_base+'?category=goose')
 		
-		self.assertEqual(200,response.status_code)
-	
-	def test_404_page(self):
-		response = self.client.get('kangaroo!')
-		self.assertEqual(404,response.status_code)
+	def rtest_add_blank_entry(self):
+		#print c
+		try:
+			c = Category.objects.create(category="Test")
+			p = Post.objects.create(
+				title="Test Add",
+				#entry = "Entry",
+				category=c,
+			#	pub_date=datetime.datetime.now()-datetime.timedelta(days =2)
+				)
+			p.save()
+		except:
+			pass
+		if Post.objects.filter(title="Test Add"):
+			self.assertEqual(1,2)
 
+	def ttest_add_blank_category(self):
+		#print c
+		try:
+			c = Category.objects.create(category="Test")
+			p = Post.objects.create(
+				title="Test Add",
+				entry = "Entry",
+			#	category=c,
+			#	pub_date=datetime.datetime.now()-datetime.timedelta(days =2)
+				)
+			p.save()
+		except:
+			pass
+		if Post.objects.filter(title="Test Add"):
+			self.assertEqual(1,2)
 
+#TO SUBMIT WIHOUT TITLE/ENTRY/CATEGORY
 
 #TO ENSURE A DEFAULT CATEGORY IS SET
 

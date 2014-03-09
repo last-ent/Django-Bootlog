@@ -13,8 +13,7 @@
 			{%endfor%}
 			
 		{% endautoescape %}
-
-	{% if entries.paginator.num_pages > 1 %}
+	{% if entries.paginator %}
 		<ul class="pager btn-lg">
 		<div class="pagination">
 			<span class="step-links">
@@ -35,7 +34,6 @@
 		</div>
 		</ul>
 	{%endif%}
-
 	{%else%}
 
 		<div class="alert alert-danger" ALIGN="center">

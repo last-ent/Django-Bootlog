@@ -23,7 +23,9 @@ context_dict = {
 	'mid_column':"bootlog/mid_column.html",
 	'side_panel':'bootlog/side_panel.html',
 	'base_page': 'bootlog/base.html',
-	'footer_caption': 'This site is powered by Django & Bootstrap',
+	'footer_caption': 'This site is powered by Django, Bootstrap & Glyphicons.',
+	'post_single':'bootlog/post.html',
+	'url_addr': '127.0.0.1:8000/b/',
 }
 
 def write_context_dict(keys, c_d, s_c_d):
@@ -81,7 +83,7 @@ def home(request):
 		posts = Post.objects.all()
 	else:
 		posts = Post.objects.filter(category__category=request.GET.get('category'))
-	entries = posts.order_by('-pub_date')
+	entries = posts.order_by('-id')
 	context_dict['entries'] = get_paginated_view(request,entries,posts_per_page)
 	context_dict['category_split'] = get_category_post_count()
 	return render(request,context_dict['base_page'],context_dict)
@@ -109,3 +111,17 @@ class BSearchView(SearchView):
 			context['suggestion'] = self.form.get_suggestion()
 		
 		return render_to_response(self.template, context, context_instance = self.context_class(self.request))
+
+def perma_post(request,blog_pk,post_pk):
+
+	entry = Post.objects.filter(blog=blog_pk,pk=post_pk)
+	#print entry, blog_pk, type(blog_pk)
+	context_dict['entries'] = entry
+	return render(request,context_dict['base_page'],context_dict)
+
+
+def view_404(request):
+	context_dict['mid_column'] = 'bootlog/404.html'
+	context_dict['msg']='Why a 404!!!'
+	context_dict['category_split'] = get_category_post_count()
+	return render(request,context_dict['base_page'],context_dict)
