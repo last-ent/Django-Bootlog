@@ -1,0 +1,41 @@
+{%extends header%}
+{%block body %}
+
+
+<form role="submit" class="form-horizontal" method = "POST" action=".">
+{%csrf_token%}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Form Name</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="handle">Handle</label>  
+  <div class="col-md-4">
+  <input id="handle" name="handle" placeholder="Handle" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="comment">Comment</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="comment" name="comment" placeholder="Enter Comment Here..."></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+{%endblock body%}

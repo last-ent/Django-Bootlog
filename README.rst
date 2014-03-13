@@ -12,6 +12,7 @@ Features
 * Search (Sidebar)
 * Categorical Posts Listing
 * Permalink
+* Social Share - Reddit, Twitter, Google Plus, Facebook
 
 
 Quick start

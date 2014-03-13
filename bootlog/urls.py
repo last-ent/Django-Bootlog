@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     	form_class=ModelSearchForm
     	), name='haystack_search'),
     url(r'^b(?P<blog_pk>\d+)p(?P<post_pk>\d+)/', bviews.perma_post),
+    url(r'^comm/',bviews.comment_view),
     #url(r'^b/',include('bootlog.urls')),
 
  #   url(r'^admin/', include(admin.site.urls)),

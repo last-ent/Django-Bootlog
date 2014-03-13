@@ -11,6 +11,8 @@ from haystack.views import SearchView
 
 from django.conf import settings
 
+from .forms import CommentForm
+
 context_dict = {
 	'header_title':'Welcome to Django Blog App',
 	'header':'bootlog/head.html',
@@ -88,7 +90,6 @@ def home(request):
 	context_dict['category_split'] = get_category_post_count()
 	return render(request,context_dict['base_page'],context_dict)
 
-
 class BSearchView(SearchView):
 	def create_response(self):
 		"""
@@ -113,9 +114,7 @@ class BSearchView(SearchView):
 		return render_to_response(self.template, context, context_instance = self.context_class(self.request))
 
 def perma_post(request,blog_pk,post_pk):
-
 	entry = Post.objects.filter(blog=blog_pk,pk=post_pk)
-	#print entry, blog_pk, type(blog_pk)
 	context_dict['entries'] = entry
 	return render(request,context_dict['base_page'],context_dict)
 
@@ -125,3 +124,19 @@ def view_404(request):
 	context_dict['msg']='Why a 404!!!'
 	context_dict['category_split'] = get_category_post_count()
 	return render(request,context_dict['base_page'],context_dict)
+
+def comment_view(request):
+	if request.method == 'POST':
+
+		form = CommentForm(request.POST)
+		if form.is_valid():
+
+			return HttpResponse("%s" %(form.cleaned_data))
+		else:
+			return HttpResponse(":-/")
+	elif request.method == "GET":
+		form = CommentForm()
+		#return render(request, 'bootlog/form.html',{'form':form})
+		context_dict['form'] = form
+		
+		return render(request, 'bootlog/comment_form.html',context_dict)

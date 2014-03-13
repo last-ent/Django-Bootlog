@@ -12,7 +12,8 @@
 				{%for category, vals in category_split.items %} 
 					<li>
 						<button onclick="window.location.href='?category={{category}}'" class="btn btn-default btn-{{vals.colour}} btn-block" type="submit">
-							{{category}}
+							{{category}} 
+
 							<span class="badge">{{vals.count}}</span>
 						</button>
 					</li>

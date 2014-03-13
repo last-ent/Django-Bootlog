@@ -14,7 +14,7 @@ class Blog(models.Model):
 
 class Category(models.Model):
 	COLOUR_CHOICES=[
-		 ('primary', 'Blue'),
+		 #('primary', 'Blue'),
 		 ('default', 'Default'),
 		 ('warning', 'Yellow'),
 		 ('success', 'Green'),
@@ -46,3 +46,9 @@ class Post(models.Model):
 			
 	def __unicode__(self):
 		return "%s" %self.title
+
+class Comment(models.Model):
+	comment = models.TextField(blank=False)
+	handle = models.CharField(max_length=25, default="Anonymous")
+	post = models.ForeignKey(Post)
+
