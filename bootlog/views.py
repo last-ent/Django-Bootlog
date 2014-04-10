@@ -65,16 +65,19 @@ if 'posts_per_page' not in context_dict.keys():
 
 posts_per_page= context_dict['posts_per_page']
 
-def get_category_post_count(posts):
-	categories =[p.category for p in  posts ]
-	cat_dict={}
-	for category in categories:
-		cat_dict[category.category] = {
-		'colour': category.colour, 
-		'count' : posts.filter(category__category=category.category).aggregate( Count('title'))['title__count'],
+def get_category_post_count(posts=False):
+	if posts:
+		categories =[p.category for p in  posts ]
+		cat_dict={}
+		for category in categories:
+			cat_dict[category.category] = {
+			'colour': category.colour, 
+			'count' : posts.filter(category__category=category.category).aggregate( Count('title'))['title__count'],
 
-		}
-	return cat_dict
+			}
+		return cat_dict
+	else:
+		return None
 
 def get_paginated_view(rq,items,nos):
 	items_paginated = False
@@ -102,9 +105,11 @@ class BSearchView(SearchView):
 			'paginator':paginator,
 			'suggestion':None,
 		}
+		entries = [result for result in page.object_list if Post.objects.get(pk=result.pk).publish=="Yes"]
+
 		context_dict['category_split'] = get_category_post_count()
 		context.update(context_dict)
-		context['entries'] = [result for result in page.object_list]
+		context['entries'] = entries 
 		
 		if self.results and hasattr(self.results, 'query') and self.results.query.backend.include_spelling:
 			context['suggestion'] = self.form.get_suggestion()

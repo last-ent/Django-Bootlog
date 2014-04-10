@@ -6,13 +6,13 @@ README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
 	name='django-bootlog',
-	version='0.0.3',
+	version='1.0.1',
 	packages=['bootlog'],
 	include_package_data=True,
 	license='New BSD License',
 	description="A Django Blogging App based on Twitter Bootstrap Theme",
 	long_description=README,
-	url='',
+	url='entworks.in',
 	author="Ent",
 	author_email="last_ent@outlook.com",
 	classifiers=[
