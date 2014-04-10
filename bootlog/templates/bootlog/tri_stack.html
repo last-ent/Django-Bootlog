@@ -1,17 +1,21 @@
 {%block tri_stack%}
 <div class="container">
 	<div class="row clearfix">
-		{%comment%}
-			<div class="col-md-1 column">
+	{%comment %}
+		<div class="col-md-2 column">
+			
 				{%block left_column %}
 			<!-- 		<div class="panel panel-default">
 						<div class="panel-body"> 
 			
 						</div>
 					</div> -->
+		
+					{%include left_sidebar %}
 				{%endblock left_column%}
-			</div>
-		{%endcomment%}
+			
+		</div>
+		{%endcomment %}
 		<div class="col-md-9 column">
 			{%block center_column %} 
 				{%include mid_column%} 

@@ -4,43 +4,35 @@
   <meta charset="utf-8">
   <title>{{header_title}}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Django Blog App">
+  <meta name="description" content="{{metadata}}">
   <meta name="author" content="Ent">
-
+  <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 {% load staticfiles %}
 
 	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
 	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
 	<!--script src="js/less-1.3.3.min.js"></script-->
 	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+
 	{% comment %}
 	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="{% static 'css/style.css' %}" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css" rel="stylesheet">
   {%endcomment%}
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">  
-  <link href="{% static 'css/mycss.css' %}" rel="stylesheet">
-  
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
   <![endif]-->
-
-  <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'img/apple-touch-icon-144-precomposed.png' %}">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'img/apple-touch-icon-114-precomposed.png' %}">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'img/apple-touch-icon-72-precomposed.png' %}">
-  <link rel="apple-touch-icon-precomposed" href="{% static 'img/apple-touch-icon-57-precomposed.png' %}">
-  <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
   
 	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  {# <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'> #}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">  
+	{# <link href="{% static 'css/mycss.css' %}" rel="stylesheet"> #}
 
 </head>
 <body>

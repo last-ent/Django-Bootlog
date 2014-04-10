@@ -1,9 +1,5 @@
-{% extends header %}
-
-{% block body %}
-	{%include toprow%}	
-
-	<div class="container">
+{%block tri_stack%}
+<div class="container">
 	<div class="row clearfix">
 	{%comment %}
 		<div class="col-md-2 column">
@@ -21,12 +17,9 @@
 		</div>
 		{%endcomment %}
 		<div class="col-md-9 column">
-			<div class="jumbotron">
-	     <h1 ALIGN = "RIGHT">{{msg}}</h1>
-	<h1 ALIGN = "Center">(╯°□°）╯︵ ┻━┻ </h1>
-  
-</div>
-
+			{%block center_column %} 
+				abc
+			{%endblock center_column%}
 		</div>
 		
 		<div class="col-md-3 column">
@@ -39,22 +32,4 @@
 
 	</div>
 </div>
-	
-
-	{%include footer_row %}
-{%endblock body%}
-
-{% include jscript_html %}
-
-
-
-
-
-
-
-
-
-
-
-
-
+{%endblock tri_stack%}

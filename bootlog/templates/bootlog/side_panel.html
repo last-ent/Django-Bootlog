@@ -1,17 +1,17 @@
 
 <div class="row">
-	<form role="search" method="GET" action="/b/s/">
+	<form role="search" method="GET" action="/s/">
 		<input id="id_q" class="form-control" type="text" placeholder="Search Blog Posts..." name="q" >
 	</form>
 </div>
 <div class="row">
 	<div class= "panel panel-default" ALIGN="CENTER">
-		<a class="btn btn-default btn-lg active btn-block" href="/b/">Categories: All</a>
+		<a class="btn btn-default btn-lg active btn-block" href="/">Categories: All</a>
 		<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
 				{%for category, vals in category_split.items %} 
 					<li>
-						<button onclick="window.location.href='?category={{category}}'" class="btn btn-default btn-{{vals.colour}} btn-block" type="submit">
+						<button onclick="window.location.href='/all/?category={{category}}'" class="btn btn-default btn-{{vals.colour}} btn-block" type="submit">
 							{{category}} 
 
 							<span class="badge">{{vals.count}}</span>
